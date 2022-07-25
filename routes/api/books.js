@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // Load Book model
-const Book = require('../../models/Employee');
+const Book = require('../../models/Parcel');
 
 // @route GET api/books/test
 // @description tests books route
@@ -24,6 +24,7 @@ router.get('/em', (req, res) => {
 // @description Get single book by id
 // @access Public
 router.get('/:id', (req, res) => {
+
   Book.findById(req.params.id)
     .then(book => res.json(book))
     .catch(err => res.status(404).json({ nobookfound: 'No Book found' }));
@@ -32,10 +33,11 @@ router.get('/:id', (req, res) => {
 // @route GET api/books
 // @description add/save book
 // @access Public
-router.post('/', (req, res) => {
-  Book.create(req.body)
-    .then(book => res.json({ msg: 'Book added successfully' }))
-    .catch(err => res.status(400).json({ error: 'Unable to add this book' }));
+router.post('/postData', (req, res) => {
+  console.log(req.query);
+  Book.create(req.query)
+    .then(book => res.send( book ))
+    .catch(err => res.status(400).json({ error: 'Unable to add this book', error: err }));
 });
 
 // @route GET api/books/:id
