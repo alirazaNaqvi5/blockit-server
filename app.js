@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectDB();
 
 app.get('/', (req, res) => res.send('Hello world!'));
-app.use(require('./routes/api/books'));
+app.use(require('./routes/api/Parcel'));
 app.use(require('./routes/api/employee.routes'));
 const port = process.env.PORT || 3001;
 
