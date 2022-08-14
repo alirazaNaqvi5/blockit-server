@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
 // create schema for parcel registration
@@ -12,7 +13,7 @@ const ParcelSchema = new Schema({
         required: true
     },
     phone: {
-        type: String,
+        type: Number,
         required: true
     },
     address: {
@@ -28,7 +29,7 @@ const ParcelSchema = new Schema({
         required: true
     },
     receiver_phone: {
-        type: String,
+        type: Number,
         required: true
     },
     receiver_address: {
@@ -40,11 +41,11 @@ const ParcelSchema = new Schema({
         required: true
     },
     weight: {
-        type: String,
+        type: Number,
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: false
     },
     status: {
@@ -62,7 +63,12 @@ const ParcelSchema = new Schema({
     registered_by: {
         type: String,
         required: true
+    },
+    admin_status: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 
-module.exports = Parcel = mongoose.model('parcel', ParcelSchema);
+module.exports = Parcel = mongoose.model('Parcel', ParcelSchema);

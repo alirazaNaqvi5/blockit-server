@@ -92,4 +92,4 @@ employeeSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model("Employee", employeeSchema);
+module.exports =  mongoose.model("Employee", employeeSchema);
